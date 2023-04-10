@@ -29,21 +29,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-       if (supportActionBar != null) supportActionBar?.hide()
+        if (supportActionBar != null) supportActionBar?.hide()
 
         initView()
     }
 
     private fun initView() {
-        sharePre= SharePreferences(this)
+        sharePre = SharePreferences(this)
 
         // on below line we are adding on query
         // listener for our search view.
         binding.actionBar.searchView.setOnQueryTextListener(object : OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query!!.isNotEmpty()){
-
+                if (query!!.isNotEmpty()) {
+                    binding.tvLocation.text = query
                     getWeatherAPI(query, ConstValue.LIMIT, ConstValue.APP_ID)
                 }
                 return false
@@ -69,16 +69,20 @@ class MainActivity : AppCompatActivity() {
                 when (resource.status) {
                     Status.Success -> {
                         val data = resource.data
-                        sharePre.location= data?.name
-
-                        binding.tvTemp.text ="${Utils.convertKelvinToCelsius(data?.main?.temp!!.toFloat())} \u2103"
-                        binding.tvWeather.text=data.weather[0].main
-                        binding.humidity.text=data.main.humidity.toString()
-                        binding.tempMin.text = "${Utils.convertKelvinToCelsius(data.main.temp_min.toFloat())} \u2103"
-                        binding.tempMax.text = "${Utils.convertKelvinToCelsius(data.main.temp_max.toFloat())} \u2103"
+                        sharePre.location = data?.name
+                        binding.tvLocation.text = data?.name
+                        binding.tvTemp.text =
+                            "${Utils.convertKelvinToCelsius(data?.main?.temp!!.toFloat())} \u2103"
+                        binding.tvWeather.text = data.weather[0].main
+                        binding.humidity.text = data.main.humidity.toString()
+                        binding.tempMin.text =
+                            "${Utils.convertKelvinToCelsius(data.main.temp_min.toFloat())} \u2103"
+                        binding.tempMax.text =
+                            "${Utils.convertKelvinToCelsius(data.main.temp_max.toFloat())} \u2103"
                     }
                     Status.Failure -> {
-                        Toast.makeText(this@MainActivity, "${resource.message}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@MainActivity, "${resource.message}", Toast.LENGTH_LONG)
+                            .show()
                     }
                     Status.Loading -> {}
                 }

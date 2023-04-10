@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.example.mphasisweatherdemo.app-mergeDebugResources-37:/layout/activity_main.xml",
+        "source": "com.example.mphasisweatherdemo.app-main-40:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Android\\.gradle\\daemon\\7.5\\com.example.mphasisweatherdemo.app-mergeDebugResources-37:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Android\\.gradle\\daemon\\7.5\\com.example.mphasisweatherdemo.app-main-40:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Android\\.gradle\\daemon\\7.5\\com.example.mphasisweatherdemo.app-mergeDebugResources-37:\\layout\\action_bar.xml",
+        "source": "C:\\Users\\Android\\.gradle\\daemon\\7.5\\com.example.mphasisweatherdemo.app-main-40:\\layout\\action_bar.xml"
+    }
+]
